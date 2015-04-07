@@ -13,10 +13,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imgImageView: UIImageView!
     
     @IBOutlet weak var txtTopText: UITextField!
     @IBOutlet weak var txtBottomText: UITextField!
+    
+    var memedImage: UIImage!
     
     let textAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -44,7 +47,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        self.shareButton.enabled = self.imgImageView.image != nil
         self.subscribeToKeyboardNotifications()
     }
     
@@ -75,11 +80,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imgImageView.image = image
+            self.shareButton.enabled = self.imgImageView.image != nil
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        shareButton.enabled = self.imgImageView.image != nil
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -129,9 +136,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
-    func save() {
+    @IBAction func shareMemedImage(sender: UIButton) {
+        self.memedImage = self.generateMemedImage()
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+        activityViewController.completionWithItemsHandler = saveMemeAfterSharing
+    }
+    
+    func saveMemeAfterSharing(activity: String!, completed: Bool, items: [AnyObject]!, error: NSError!) {
+        if completed {
+            self.saveMeme()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func saveMeme() {
         // Create the meme
-        var meme = Meme(topString: txtTopText.text!, bottomString: txtBottomText.text!, originalImage: imgImageView.image!, memedImage: generateMemedImage())
+        var meme = Meme(topString: txtTopText.text!, bottomString: txtBottomText.text!, originalImage: imgImageView.image!, memedImage: self.memedImage)
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as AppDelegate
+        appDelegate.memes.append(meme)
     }
     
 }
