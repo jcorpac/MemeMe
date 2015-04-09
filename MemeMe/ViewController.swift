@@ -111,7 +111,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
-        return keyboardSize.CGRectValue().height
+
+        
+        if txtBottomText.editing {
+            return keyboardSize.CGRectValue().height
+        }
+        else {
+            return 0
+        }
+        //return keyboardSize.CGRectValue().height
     }
     
     func generateMemedImage() -> UIImage {
@@ -160,5 +168,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appDelegate.memes.append(meme)
     }
     
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
 }
 

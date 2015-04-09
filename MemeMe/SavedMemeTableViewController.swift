@@ -8,14 +8,44 @@
 
 import UIKit
 
-class SavedMemeTableViewController: UIViewController {
-    var memes: [Meme]!
+class SavedMemeTableViewController: TabBarViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.delegate = self
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
         
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as AppDelegate
-        memes = appDelegate.memes
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memes.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let tableRow = tableView.dequeueReusableCellWithIdentifier("MemeTableRow", forIndexPath: indexPath) as UITableViewCell
+        
+        let meme = memes[indexPath.row]
+        
+        tableRow.imageView?.image = meme.memedImage
+        tableRow.textLabel?.text = meme.topString
+        tableRow.detailTextLabel?.text = meme.bottomString
+        
+        return tableRow
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // Grab the DetailVC from Storyboard
+        let detailVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController")! as MemeDetailViewController
+        
+        //Populate the view controller with data from the delected item
+        detailVC.meme = memes[indexPath.row]
+        
+        //Present the view controller using navigation
+        self.navigationController!.pushViewController(detailVC, animated: true)
     }
 }

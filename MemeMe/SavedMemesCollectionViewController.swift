@@ -8,14 +8,41 @@
 
 import UIKit
 
-class SavedMemeCollectionViewController: UIViewController {
-    var memes: [Meme]!
+class SavedMemeCollectionViewController: TabBarViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView.delegate = self
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.memes!.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as UICollectionViewCell
+        let meme = memes[indexPath.item]
+
+        cell.backgroundView = UIImageView(image: meme.memedImage)
+
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // Grab the DetailVC from Storyboard
+        let detailVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController")!  as MemeDetailViewController
         
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as AppDelegate
-        memes = appDelegate.memes
+        //Populate the view controller with data from the delected item
+        detailVC.meme = self.memes[indexPath.row]
+        
+        //Present the view controller using navigation
+        self.navigationController!.pushViewController(detailVC, animated: true)
     }
 }
