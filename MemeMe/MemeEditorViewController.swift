@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Jeff Corpac on 3/29/15.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     @IBOutlet weak var shareButton: UIBarButtonItem!
+
     @IBOutlet weak var imgImageView: UIImageView!
-    
     @IBOutlet weak var txtTopText: UITextField!
     @IBOutlet weak var txtBottomText: UITextField!
     
@@ -84,7 +84,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         shareButton.enabled = self.imgImageView.image != nil
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -119,7 +119,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         else {
             return 0
         }
-        //return keyboardSize.CGRectValue().height
     }
     
     func generateMemedImage() -> UIImage {

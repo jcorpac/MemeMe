@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="MemeEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ar6-k2-GPq"/>
                         <viewControllerLayoutGuide type="bottom" id="Geg-sJ-R6M"/>
@@ -278,10 +278,10 @@
             </objects>
             <point key="canvasLocation" x="4006.5" y="352"/>
         </scene>
-        <!--Saved Meme Table View Controller-->
+        <!--Saved Memes Table View Controller-->
         <scene sceneID="O98-0s-AmP">
             <objects>
-                <viewController id="iSd-Uf-cGs" customClass="SavedMemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iSd-Uf-cGs" customClass="SavedMemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oLD-sj-7vb"/>
                         <viewControllerLayoutGuide type="bottom" id="emS-Tx-3T4"/>

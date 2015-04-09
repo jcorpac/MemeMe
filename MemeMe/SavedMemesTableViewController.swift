@@ -1,5 +1,5 @@
 //
-//  SavedMemeTableViewController.swift
+//  SavedMemesTableViewController.swift
 //  MemeMe
 //
 //  Created by Jeff Corpac on 4/7/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavedMemeTableViewController: TabBarViewController, UITableViewDelegate, UITableViewDataSource {
+class SavedMemesTableViewController: TabBarViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -38,7 +38,7 @@ class SavedMemeTableViewController: TabBarViewController, UITableViewDelegate, U
         return tableRow
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Grab the DetailVC from Storyboard
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
         

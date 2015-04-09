@@ -1,5 +1,5 @@
 //
-//  TabBarController.swift
+//  TabBarViewController.swift
 //  MemeMe
 //
 //  Created by Jeff Corpac on 4/8/15.
@@ -21,7 +21,7 @@ class TabBarViewController: UIViewController {
         self.memes = appDelegate.memes
         
         if self.memes.count == 0 {
-            let newEditor = self.storyboard!.instantiateViewControllerWithIdentifier("MemeEditor")! as ViewController
+            let newEditor = self.storyboard!.instantiateViewControllerWithIdentifier("MemeEditor")! as MemeEditorViewController
             
             self.navigationController?.pushViewController(newEditor, animated: true)
         }
