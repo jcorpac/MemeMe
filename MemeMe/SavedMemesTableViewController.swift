@@ -42,7 +42,7 @@ class SavedMemesTableViewController: TabBarViewController, UITableViewDelegate, 
         // Grab the DetailVC from Storyboard
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
         
-        //Populate the view controller with data from the delected item
+        //Populate the view controller with the selected meme and its index
         detailVC.meme = memes[indexPath.row]
         detailVC.memeIndex = indexPath.row
         

@@ -9,16 +9,20 @@
 import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
+    // Toolbar UI elements
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    // Navigation bar UI elements
     @IBOutlet weak var shareButton: UIBarButtonItem!
 
+    // Meme UI Elements
     @IBOutlet weak var imgImageView: UIImageView!
     @IBOutlet weak var txtTopText: UITextField!
     @IBOutlet weak var txtBottomText: UITextField!
     
+    // Completed meme image
     var memedImage: UIImage!
     
     let textAttributes = [
@@ -32,11 +36,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         initializeTextField(txtTopText, initialText: "TOP")
         initializeTextField(txtBottomText, initialText: "BOTTOM")
     }
-    
+
+    // Helper function, initialize text fields for Meme before allowing editing
     func initializeTextField(textField: UITextField, initialText: String) {
         textField.defaultTextAttributes = textAttributes
         textField.placeholder = initialText
@@ -60,7 +65,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
@@ -112,11 +116,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
 
-        
+        // Only move the view if the bottom text field is being edited.
         if txtBottomText.editing {
             return keyboardSize.CGRectValue().height
-        }
-        else {
+        } else {
             return 0
         }
     }
@@ -140,6 +143,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
         toolbar.hidden = false
         
+        // Return the rendered image
         return memedImage
     }
     
@@ -160,9 +164,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func saveMeme() {
-        // Create the meme
+        // Create the meme object
         var meme = Meme(topString: txtTopText.text!, bottomString: txtBottomText.text!, originalImage: imgImageView.image!, memedImage: self.memedImage)
         
+        // Add the meme object to the AppDelegate's array
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.memes.append(meme)
     }
