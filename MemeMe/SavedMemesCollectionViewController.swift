@@ -41,6 +41,7 @@ class SavedMemeCollectionViewController: TabBarViewController, UICollectionViewD
         
         //Populate the view controller with data from the delected item
         detailVC.meme = self.memes[indexPath.row]
+        detailVC.memeIndex = indexPath.row
         
         //Present the view controller using navigation
         self.navigationController?.pushViewController(detailVC, animated: true)

@@ -11,11 +11,18 @@ import UIKit
 class MemeDetailViewController: UIViewController {
     
     var meme: Meme!
+    var memeIndex: Int!
     
     @IBOutlet weak var imgMemedImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imgMemedImage.image = meme.memedImage
+    }
+    
+    @IBAction func deleteMeme(sender: UIBarButtonItem) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.memes.removeAtIndex(memeIndex)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

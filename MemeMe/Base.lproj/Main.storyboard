@@ -270,13 +270,20 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="xa0-Sq-fPh">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="69G-tY-E1P">
+                            <connections>
+                                <action selector="deleteMeme:" destination="a5W-gW-67Y" id="2YG-YM-SDh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imgMemedImage" destination="JyA-h5-deu" id="4nf-ps-iub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSl-JD-Pht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4006.5" y="352"/>
+            <point key="canvasLocation" x="3979.5" y="363"/>
         </scene>
         <!--Saved Memes Table View Controller-->
         <scene sceneID="O98-0s-AmP">
