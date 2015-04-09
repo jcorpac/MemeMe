@@ -156,6 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if completed {
             self.saveMeme()
             self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
     }
     
@@ -163,8 +164,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Create the meme
         var meme = Meme(topString: txtTopText.text!, bottomString: txtBottomText.text!, originalImage: imgImageView.image!, memedImage: self.memedImage)
         
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.memes.append(meme)
     }
     

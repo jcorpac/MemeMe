@@ -50,14 +50,6 @@
                                     </mask>
                                 </variation>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HoH-md-VyJ">
-                                <rect key="frame" x="0.0" y="437" width="600" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="bsA-8K-msA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1v3-13-mkC">
                                 <rect key="frame" x="0.0" y="48" width="600" height="47"/>
                                 <constraints>
@@ -65,6 +57,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HoH-md-VyJ">
+                                <rect key="frame" x="0.0" y="437" width="600" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="bsA-8K-msA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,7 +74,7 @@
                                 <variation key="widthClass=compact" constant="-144"/>
                             </constraint>
                             <constraint firstItem="HoH-md-VyJ" firstAttribute="top" secondItem="zaV-ag-2yO" secondAttribute="bottom" constant="-75" id="GgH-2G-9HY">
-                                <variation key="widthClass=compact" constant="-100"/>
+                                <variation key="widthClass=compact" constant="-110"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="zaV-ag-2yO" secondAttribute="trailing" constant="-16" id="I23-K0-YND">
                                 <variation key="widthClass=compact" constant="-16"/>
@@ -147,8 +147,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-tU-RT1">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-tU-RT1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dbz-uI-kez">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -302,7 +303,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e2C-yE-Uxj">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -311,7 +312,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AcT-1b-0yz">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -327,7 +328,6 @@
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="iSd-Uf-cGs" id="O0t-7V-kV7"/>
-                                    <outlet property="delegate" destination="iSd-Uf-cGs" id="aQH-JM-GNT"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -374,11 +374,11 @@
             </objects>
             <point key="canvasLocation" x="3067.5" y="32"/>
         </scene>
-        <!--Shared Memes-->
+        <!--Sent Memes-->
         <scene sceneID="vLf-fL-vog">
             <objects>
-                <tabBarController title="Shared Memes" id="bHB-pA-bbP" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="v9a-Xl-gHz">
+                <tabBarController title="Sent Memes" id="bHB-pA-bbP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="v9a-Xl-gHz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="oG6-AW-YQN">
                             <connections>
                                 <segue destination="vXZ-lx-hvc" kind="show" id="zxA-4m-tSK"/>

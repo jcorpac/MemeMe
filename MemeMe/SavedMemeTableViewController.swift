@@ -40,12 +40,12 @@ class SavedMemeTableViewController: TabBarViewController, UITableViewDelegate, U
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // Grab the DetailVC from Storyboard
-        let detailVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController")! as MemeDetailViewController
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
         
         //Populate the view controller with data from the delected item
         detailVC.meme = memes[indexPath.row]
         
         //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailVC, animated: true)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

@@ -37,12 +37,12 @@ class SavedMemeCollectionViewController: TabBarViewController, UICollectionViewD
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // Grab the DetailVC from Storyboard
-        let detailVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController")!  as MemeDetailViewController
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController")  as MemeDetailViewController
         
         //Populate the view controller with data from the delected item
         detailVC.meme = self.memes[indexPath.row]
         
         //Present the view controller using navigation
-        self.navigationController!.pushViewController(detailVC, animated: true)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
