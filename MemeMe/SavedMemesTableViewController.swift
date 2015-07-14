@@ -27,7 +27,7 @@ class SavedMemesTableViewController: TabBarViewController, UITableViewDelegate, 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tableRow = tableView.dequeueReusableCellWithIdentifier("MemeTableRow", forIndexPath: indexPath) as UITableViewCell
+        let tableRow = tableView.dequeueReusableCellWithIdentifier("MemeTableRow", forIndexPath: indexPath) as! UITableViewCell
         
         let meme = memes[indexPath.row]
         
@@ -40,7 +40,7 @@ class SavedMemesTableViewController: TabBarViewController, UITableViewDelegate, 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Grab the DetailVC from Storyboard
-        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController") as MemeDetailViewController
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         
         //Populate the view controller with the selected meme and its index
         detailVC.meme = memes[indexPath.row]

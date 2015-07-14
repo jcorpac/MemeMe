@@ -114,7 +114,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
 
         // Only move the view if the bottom text field is being edited.
         if txtBottomText.editing {
@@ -168,7 +168,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         var meme = Meme(topString: txtTopText.text!, bottomString: txtBottomText.text!, originalImage: imgImageView.image!, memedImage: self.memedImage)
         
         // Add the meme object to the AppDelegate's array
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.memes.append(meme)
     }
     

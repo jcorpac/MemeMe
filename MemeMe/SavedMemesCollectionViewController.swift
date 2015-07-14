@@ -27,7 +27,7 @@ class SavedMemeCollectionViewController: TabBarViewController, UICollectionViewD
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomMemeCell", forIndexPath: indexPath) as! UICollectionViewCell
         let meme = memes[indexPath.item]
 
         cell.backgroundView = UIImageView(image: meme.memedImage)
@@ -37,7 +37,7 @@ class SavedMemeCollectionViewController: TabBarViewController, UICollectionViewD
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // Grab the DetailVC from Storyboard
-        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController")  as MemeDetailViewController
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeDetailViewController")  as! MemeDetailViewController
         
         //Populate the view controller with data from the meme and its index
         detailVC.meme = self.memes[indexPath.row]
